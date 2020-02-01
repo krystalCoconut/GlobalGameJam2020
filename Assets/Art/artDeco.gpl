@@ -3,11 +3,12 @@ GIMP Palette
 # by nathan "caffinate" scott
 # https://twitter.com/caffi_nate
 #
-
+i
 11 	9   13 black
-35 	28  20 brown
-99 	80  55 midgray
-199 179 154 stone
+59 	44  35 brown
+121 96  80 litebrown
 241 234 224 cream
-243 207 126 yellow
-53 	116 117 teal
+227 202 136 yellow
+102 126 113 teal
+59  77  91  blue
+211 94  61  orange
