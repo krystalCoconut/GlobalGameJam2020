@@ -11,11 +11,15 @@ public class CubeSide : MonoBehaviour
 
 
     public float rotationSpeed = 1f;
-    public float startRotation;
+    public Vector3 startRotation;
     public bool rotating;
     public float rotateDir;
 
-    public Quaternion startRot;
+    public float rotationAmount;
+
+    public CubeHandler ch;
+
+    public Vector3 axis;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,44 +29,48 @@ public class CubeSide : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(key))
+        if(Input.GetKeyDown(key) && ch.numRotatingSides == 0)
         {
             // Rotate Clockwise
-            startRotation = transform.rotation.eulerAngles.y;
-            startRot = transform.rotation;
+            startRotation = transform.rotation.eulerAngles;
             rotateDir = 1;
+            ch.numRotatingSides += 1;
             rotate();
+
         }
 
-        if(Input.GetKeyDown(key) && Input.GetKey(KeyCode.LeftShift))
+        if(Input.GetKeyDown(key) && Input.GetKey(KeyCode.LeftShift) && ch.numRotatingSides == 0)
         {
             // Rotate anticlockwise
-            startRotation = transform.rotation.eulerAngles.y;
-            startRot = transform.rotation;
+            startRotation = transform.rotation.eulerAngles;
             rotateDir = -1;
+            ch.numRotatingSides += 1;
             rotate();
         }
 
         if(rotating)
         {
-            // Limit rotation to 90 degrees
-            if( Mathf.Abs(transform.rotation.eulerAngles.y -(startRotation + 90 * rotateDir)) > 0.1f )
-                transform.Rotate(startRot.eulerAngles + transform.up, Time.deltaTime * rotationSpeed * rotateDir);
-            else
+
+            rotationAmount += Time.deltaTime * rotationSpeed ;
+
+            //float rotationVal = Mathf.Lerp((startRotation * axis).magnitude, Mathf.Sign((startRotation * axis).magnitude) * 90 + (startRotation * axis) );
+            //transform.eulerAngles = tempROT;
+
+            if(rotationAmount >= 1f)
             {
-                
-                transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.eulerAngles.x, startRotation + 90 * rotateDir, transform.rotation.eulerAngles.z));
-                // Stop rotating
                 rotating = false;
-                
-                // Unparent all the children
-                foreach(Collider c in colliders)
+                foreach (Collider c in colliders)
                 {
                     c.transform.SetParent(null);
                 }
+                rotationAmount = 0f;
+                ch.numRotatingSides -= 1;
             }
+
         }
     }
+
+
 
     public void rotate()
     {

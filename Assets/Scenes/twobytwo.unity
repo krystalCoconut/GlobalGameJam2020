@@ -183,6 +183,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 508164312875585614, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10.000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 508164312875585614, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10.000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 508164312875585614, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10.000005
+      objectReference: {fileID: 0}
     - target: {fileID: 2861055030659003087, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
         type: 3}
       propertyPath: m_TileAssetArray.Array.size
@@ -6847,9 +6862,12 @@ MonoBehaviour:
   key: 113
   colliders: []
   rotationSpeed: 20
-  startRotation: 0
+  startRotation: {x: 0, y: 0, z: 0}
   rotating: 0
   rotateDir: 0
+  rotationAmount: 0
+  ch: {fileID: 1619654265}
+  axis: {x: 0, y: 0, z: 1}
 --- !u!1 &342893433
 GameObject:
   m_ObjectHideFlags: 0
@@ -6910,9 +6928,12 @@ MonoBehaviour:
   key: 97
   colliders: []
   rotationSpeed: 20
-  startRotation: 0
+  startRotation: {x: 0, y: 0, z: 0}
   rotating: 0
   rotateDir: 0
+  rotationAmount: 0
+  ch: {fileID: 1619654265}
+  axis: {x: -1, y: 0, z: 0}
 --- !u!1001 &463043228
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6974,6 +6995,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 508164312875585614, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10.000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 508164312875585614, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10.000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 508164312875585614, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10.000005
       objectReference: {fileID: 0}
     - target: {fileID: 2861055030659003087, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
         type: 3}
@@ -10219,6 +10255,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 179.99998
+      objectReference: {fileID: 0}
+    - target: {fileID: 508164312875585614, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10.000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 508164312875585614, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10.000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 508164312875585614, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10.000001
       objectReference: {fileID: 0}
     - target: {fileID: 2861055030659003087, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
         type: 3}
@@ -13540,9 +13591,12 @@ MonoBehaviour:
   key: 119
   colliders: []
   rotationSpeed: 20
-  startRotation: 0
+  startRotation: {x: 0, y: 0, z: 0}
   rotating: 0
   rotateDir: 0
+  rotationAmount: 0
+  ch: {fileID: 1619654265}
+  axis: {x: 0, y: 1, z: 0}
 --- !u!1 &737614659
 GameObject:
   m_ObjectHideFlags: 0
@@ -13669,9 +13723,12 @@ MonoBehaviour:
   key: 101
   colliders: []
   rotationSpeed: 20
-  startRotation: 0
+  startRotation: {x: 0, y: 0, z: 0}
   rotating: 0
   rotateDir: 0
+  rotationAmount: 0
+  ch: {fileID: 1619654265}
+  axis: {x: 0, y: 0, z: -1}
 --- !u!1001 &1001679182
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13733,6 +13790,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 508164312875585614, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10.000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 508164312875585614, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10.000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 508164312875585614, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10.000007
       objectReference: {fileID: 0}
     - target: {fileID: 2861055030659003087, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
         type: 3}
@@ -20432,9 +20504,12 @@ MonoBehaviour:
   key: 100
   colliders: []
   rotationSpeed: 20
-  startRotation: 0
+  startRotation: {x: 0, y: 0, z: 0}
   rotating: 0
   rotateDir: 0
+  rotationAmount: 0
+  ch: {fileID: 1619654265}
+  axis: {x: 1, y: 0, z: 0}
 --- !u!1 &1285429805
 GameObject:
   m_ObjectHideFlags: 0
@@ -20495,9 +20570,12 @@ MonoBehaviour:
   key: 115
   colliders: []
   rotationSpeed: 20
-  startRotation: 0
+  startRotation: {x: 0, y: 0, z: 0}
   rotating: 0
   rotateDir: 0
+  rotationAmount: 0
+  ch: {fileID: 1619654265}
+  axis: {x: 0, y: -1, z: 0}
 --- !u!1 &1586097684
 GameObject:
   m_ObjectHideFlags: 0
@@ -20624,6 +20702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9af4b134b298df84b928146d3bf94b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numRotatingSides: 0
   isRotating: 0
   right: {fileID: 0}
   up: {fileID: 0}

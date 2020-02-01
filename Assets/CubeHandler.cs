@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CubeHandler : MonoBehaviour
 {
+    public int numRotatingSides;
     public bool isRotating;
     public CubeSide right, up, down, left, front, back;
 
