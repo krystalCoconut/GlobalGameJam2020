@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Rewired;
 
 public class Player_Handler : MonoBehaviour
 {
@@ -11,11 +12,12 @@ public class Player_Handler : MonoBehaviour
     Vector2 direction;
     RaycastHit2D colRay;
     bool bounceBack;
+    Player player;
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        player = ReInput.players.GetPlayer(0);
     }
 
     // Update is called once per frame
@@ -24,8 +26,8 @@ public class Player_Handler : MonoBehaviour
 
         #region movement
         //mapping input to float value
-        axisx = Input.GetAxis("Horizontal");
-        axisy = Input.GetAxis("Vertical");
+        axisx = player.GetAxis("Horizontal");
+        axisy = player.GetAxis("Vertical");
 
         //moves and rotates character when input is detected & not colliding
         if (bounceBack != true)
@@ -64,7 +66,8 @@ public class Player_Handler : MonoBehaviour
         {
             if (colRay.collider.CompareTag("Wall"))
             {
-                Debug.Log("you hit wall ^____^^");
+                //Debug.Log("you hit wall ^____^^");
+                //Debug.Log("you hit wall ^____^^");
                 bounceBack = true;
             }
             if (colRay.collider.CompareTag("Spin"))

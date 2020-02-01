@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-
+using Rewired;
 
 public class CubeSide : MonoBehaviour
 {
-    public KeyCode key;
+    public string key;
     private BoxCollider bc;
 
     public List<Collider> colliders;
@@ -19,11 +19,15 @@ public class CubeSide : MonoBehaviour
     public float rotationAmount;
     public CubeHandler ch;
     public Vector3 axis;
+    public Player player;
 
     public bool collidersEnabled;
     // Start is called before the first frame update
     void Start()
     {
+        player = ReInput.players.GetPlayer(0);
+
+
         bc = GetComponent<BoxCollider>();
     }
 
@@ -31,7 +35,7 @@ public class CubeSide : MonoBehaviour
     void Update()
     {
 
-        if(Input.GetKeyDown(key) && Input.GetKey(KeyCode.LeftShift) && ch.numRotatingSides == 0)
+        if(player.GetButtonDown(key) && player.GetButton("Invert") && ch.numRotatingSides == 0)
         {
             // Rotate anticlockwise
             startRotation = transform.eulerAngles;
@@ -39,7 +43,7 @@ public class CubeSide : MonoBehaviour
             ch.numRotatingSides += 1;
             rotate();
         }else
-        if(Input.GetKeyDown(key) && ch.numRotatingSides == 0)
+        if(player.GetButtonDown(key) && ch.numRotatingSides == 0)
         {
             // Rotate Clockwise
             startRotation = transform.eulerAngles;
