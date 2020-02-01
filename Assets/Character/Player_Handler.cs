@@ -14,6 +14,7 @@ public class Player_Handler : MonoBehaviour
     bool bounceBack;
     Player player;
     Animator anim;
+    public float radius;
 
     public Transform cubeCentre;
 
@@ -78,7 +79,7 @@ public class Player_Handler : MonoBehaviour
 
         #region collisionCast
         //raycast 
-        colRay = Physics2D.Raycast(transform.position,direction,1);
+        colRay = Physics2D.Raycast(transform.position,direction,radius);
         // raycast detects collision
         if(colRay.collider!=null)
         {
