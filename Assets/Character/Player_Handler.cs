@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Player_Handler : MonoBehaviour
 {
-    public GameObject daCube;
-    Cube_Rotator c_rot;
+    //public GameObject daCube;
+  //  Cube_Rotator c_rot;
     int speed = 5 , bounceSpeed = 5;
     float axisx, axisy, bounceTimer = 0.1f;
     Vector2 direction;
@@ -15,7 +15,7 @@ public class Player_Handler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        c_rot = daCube.GetComponent<Cube_Rotator>();
+       
     }
 
     // Update is called once per frame
@@ -64,6 +64,7 @@ public class Player_Handler : MonoBehaviour
         {
             if (colRay.collider.CompareTag("Wall"))
             {
+                Debug.Log("you hit wall ^____^^");
                 bounceBack = true;
             }
             if (colRay.collider.CompareTag("Spin"))
