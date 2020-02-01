@@ -13,11 +13,13 @@ public class Player_Handler : MonoBehaviour
     RaycastHit2D colRay;
     bool bounceBack;
     Player player;
+    Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         player = ReInput.players.GetPlayer(0);
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -34,24 +36,38 @@ public class Player_Handler : MonoBehaviour
         {
             if (axisx != 0 || axisy != 0 && colRay.collider == null)
             {
-                speed = 5;
-                float rot_z = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
+
+                speed = 3;
+                float playrate = Mathf.Abs(axisx) + Mathf.Abs(axisy);
+                anim.speed = playrate;
+                anim.SetBool("Moving", true);
             }
             else
             {
+                anim.speed = 1;
                 speed = 0;
+                anim.SetBool("Moving", false);
             }
             //moves character in a direction
-            transform.Translate(Vector3.up * speed * Time.deltaTime);
+            transform.Translate(direction * speed * Time.deltaTime);
             direction = new Vector2(axisx, axisy);
+            if (axisx < 0)
+            {
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().flipX = false;
+            }
         }
         else
         {
-            transform.Translate(Vector3.down * bounceSpeed * Time.deltaTime);
+            anim.SetBool("Bounce", true);
+            transform.Translate(-direction * bounceSpeed * Time.deltaTime);
             bounceTimer -= Time.deltaTime;
             if (bounceTimer <= 0)
             {
+                anim.SetBool("Bounce", false);
                 bounceTimer = .1f;
                 bounceBack = false;
             }
@@ -60,7 +76,7 @@ public class Player_Handler : MonoBehaviour
 
         #region collisionCast
         //raycast 
-        colRay = Physics2D.Raycast(transform.position,transform.up,1);
+        colRay = Physics2D.Raycast(transform.position,direction,1);
         // raycast detects collision
         if(colRay.collider!=null)
         {
