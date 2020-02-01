@@ -14,6 +14,8 @@ public class Player_Handler : MonoBehaviour
     bool bounceBack;
     Player player;
 
+    public Transform cubeCentre;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,19 +81,56 @@ public class Player_Handler : MonoBehaviour
        
         if(transform.position.x >= 9 || transform.position.x <= -9)
         {
+            if(transform.position.x >= 9)
+            {
+                cubeCentre.Rotate(new Vector3(0, 90, 0));
+
+                normalise();
+            }
+            else if(transform.position.x <= -9)
+            {
+                cubeCentre.Rotate(new Vector3(0, -90, 0));
+
+                normalise();
+            }
             transform.position = new Vector3(-transform.position.x, transform.position.y,transform.position.z);
         }
 
         if (transform.position.y >= 9 || transform.position.y <= -9)
         {
+            if (transform.position.y >= 9)
+            {
+                cubeCentre.Rotate(new Vector3(-90, 0, 0));
+
+                normalise();
+            }
+            else if (transform.position.y <= -9)
+            {
+                cubeCentre.Rotate(new Vector3(90, 0, 0));
+
+                normalise();
+            }
             transform.position = new Vector3(transform.position.x, -transform.position.y, transform.position.z);
         }
-
-
-
-
         #endregion
     }
 
+
+    void normalise()
+    {
+        Transform[] children = new Transform[8];
+        for (int i = 0; i < 8; i++)
+        {
+            children[i] = cubeCentre.GetChild(i);
+        }
+        cubeCentre.DetachChildren();
+
+        cubeCentre.rotation = Quaternion.identity;
+
+        for (int i = 0; i < 8; i++)
+        {
+            children[i].SetParent(cubeCentre);
+        }
+    }
     
 }
