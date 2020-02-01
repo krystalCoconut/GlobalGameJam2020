@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
+
 
 public class CubeSide : MonoBehaviour
 {
@@ -17,6 +19,8 @@ public class CubeSide : MonoBehaviour
     public float rotationAmount;
     public CubeHandler ch;
     public Vector3 axis;
+
+    public bool collidersEnabled;
     // Start is called before the first frame update
     void Start()
     {
@@ -100,12 +104,32 @@ public class CubeSide : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!colliders.Contains(other)) { colliders.Add(other); }
+        if (!colliders.Contains(other))
+        {
+            colliders.Add(other);
+
+            if(collidersEnabled)
+            {
+                for(int i=0;i<3;i++)
+                {
+                    // enable collision tilemap
+                    other.transform.GetChild(i).GetChild(1).GetComponent<TilemapCollider2D>().enabled = true;
+                }
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         colliders.Remove(other);
+        if (collidersEnabled)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                // enable collision tilemap
+                other.transform.GetChild(i).GetChild(1).GetComponent<TilemapCollider2D>().enabled = false;
+            }
+        }
     }
 
 }
