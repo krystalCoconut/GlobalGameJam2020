@@ -20,7 +20,7 @@ public class Cube_Rotator : MonoBehaviour
         {
             lerpAlpha = lerpAlpha += Time.deltaTime;
            //float lerpVal = Mathf.Lerp(xrot,yrot,lerpAlpha);
-            transform.eulerAngles = new Vector3(lerpVal, 0, 0);
+            //transform.eulerAngles = new Vector3(lerpVal, 0, 0);
             if (lerpAlpha > 1)
             {
                 timeToSpin = false;
