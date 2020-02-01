@@ -11,10 +11,13 @@ public class Player_Handler : MonoBehaviour
     float axisx, axisy, bounceTimer = 0.1f;
     Vector2 direction;
     RaycastHit2D colRay;
-    bool bounceBack;
+    public enum State { normal, bounceback, attack } ;
+    public State myState;
     Player player;
     Animator anim;
     public float radius;
+
+    public float attackTimer;
 
     public Transform cubeCentre;
 
@@ -35,7 +38,7 @@ public class Player_Handler : MonoBehaviour
         axisy = player.GetAxis("Vertical");
 
         //moves and rotates character when input is detected & not colliding
-        if (bounceBack != true)
+        if (myState == State.normal)
         {
             if (axisx != 0 || axisy != 0 && colRay.collider == null)
             {
@@ -54,25 +57,46 @@ public class Player_Handler : MonoBehaviour
             //moves character in a direction
             transform.Translate(direction * speed * Time.deltaTime);
             direction = new Vector2(axisx, axisy);
+
+            if(player.GetButtonDown("Action"))
+            {
+                anim.speed = 1;
+                speed = 0;
+                anim.SetBool("Wrench", true);
+                attackTimer = 0.6f;
+                myState = State.attack;
+            }
+
             if (axisx < 0)
             {
                 GetComponent<SpriteRenderer>().flipX = true;
             }
-            else
+            else if(axisx > 0)
             {
                 GetComponent<SpriteRenderer>().flipX = false;
             }
         }
-        else
+        else if(myState == State.bounceback)
         {
             anim.SetBool("Bounce", true);
+            
             transform.Translate(-direction * bounceSpeed * Time.deltaTime);
             bounceTimer -= Time.deltaTime;
             if (bounceTimer <= 0)
             {
                 anim.SetBool("Bounce", false);
                 bounceTimer = .1f;
-                bounceBack = false;
+                myState = State.normal;
+            }
+        }
+        else if(myState == State.attack)
+        {
+            attackTimer -= Time.deltaTime;
+            if(attackTimer <= 0)
+            {
+                anim.SetBool("Wrench", false);
+                attackTimer = 0f;
+                myState = State.normal;
             }
         }
         #endregion
@@ -85,9 +109,9 @@ public class Player_Handler : MonoBehaviour
         {
             if (colRay.collider.CompareTag("Wall"))
             {
+                Debug.Log(colRay.collider);
                 //Debug.Log("you hit wall ^____^^");
-                //Debug.Log("you hit wall ^____^^");
-                bounceBack = true;
+                myState = State.bounceback;
             }
             if (colRay.collider.CompareTag("Spin"))
             {
