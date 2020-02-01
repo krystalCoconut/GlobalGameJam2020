@@ -53,6 +53,7 @@ public class CubeSide : MonoBehaviour
 
             rotationAmount += Time.deltaTime * rotationSpeed ;
 
+           
             //float rotationVal = Mathf.Lerp((startRotation * axis).magnitude, Mathf.Sign((startRotation * axis).magnitude) * 90 + (startRotation * axis) );
             //transform.eulerAngles = tempROT;
 
