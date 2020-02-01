@@ -4,47 +4,82 @@ using UnityEngine;
 
 public class Player_Handler : MonoBehaviour
 {
-    int speed = 10;
-    float axisx, axisy;
-    Vector3 direction;
+    public GameObject daCube;
+    Cube_Rotator c_rot;
+    int speed = 5 , bounceSpeed = 5;
+    float axisx, axisy, bounceTimer = 0.1f;
+    Vector2 direction;
     RaycastHit2D colRay;
-
+    bool bounceBack;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        c_rot = daCube.GetComponent<Cube_Rotator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
         #region movement
-        if (axisx !=0 || axisy != 0  &&  colRay.collider == null)
+        //mapping input to float value
+        axisx = Input.GetAxis("Horizontal");
+        axisy = Input.GetAxis("Vertical");
+
+        //moves and rotates character when input is detected & not colliding
+        if (bounceBack != true)
         {
-            speed = 10;
+            if (axisx != 0 || axisy != 0 && colRay.collider == null)
+            {
+                speed = 5;
+                float rot_z = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
+            }
+            else
+            {
+                speed = 0;
+            }
+            //moves character in a direction
+            transform.Translate(Vector3.up * speed * Time.deltaTime);
+            direction = new Vector2(axisx, axisy);
         }
         else
         {
-            speed = 0;
+            transform.Translate(Vector3.down * bounceSpeed * Time.deltaTime);
+            bounceTimer -= Time.deltaTime;
+            if (bounceTimer <= 0)
+            {
+                bounceTimer = .1f;
+                bounceBack = false;
+            }
         }
-        axisx = Input.GetAxis("Horizontal");
-        axisy = Input.GetAxis("Vertical");
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        direction = new Vector3(axisx, axisy, 0);
-        transform.LookAt(transform.position + 10 * direction, Vector3.forward);
-        // transform.eulerAngles = new Vector3(90, transform.eulerAngles.y, transform.eulerAngles.y);
         #endregion
 
         #region collisionCast
-        colRay = Physics2D.Raycast(transform.position,transform.forward,2);
-        Debug.DrawRay (transform.position, Vector2.down* 2);
-
-        if (colRay.collider != null)
+        //raycast 
+        colRay = Physics2D.Raycast(transform.position,transform.up,1);
+        // raycast detects collision
+        if(colRay.collider!=null)
         {
-            Debug.Log("BOWBOWBOWBOWOBW");
+            if (colRay.collider.CompareTag("Wall"))
+            {
+                bounceBack = true;
+            }
+            if (colRay.collider.CompareTag("Spin"))
+            {
+                //c_rot.spin();
+            }
         }
-        
+
+       
+
+
+
+
+
         #endregion
     }
+
+    
 }
