@@ -11,6 +11,11 @@ public class Bread_Hider : MonoBehaviour
         transform.parent = BT[Random.Range( 0, BT.Length)].transform;
         transform.localPosition = Vector3.zero;
         
+
+    }
+    void Update()
+    {
+        transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
 }
