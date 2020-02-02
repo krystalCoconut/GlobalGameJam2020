@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 338334257180072270, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e3fb216d0fe86d49879e2ac31105458, type: 2}
     - target: {fileID: 508164312875585614, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11400,12 +11405,12 @@ PrefabInstance:
     - target: {fileID: 9105844261129442343, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
         type: 3}
       propertyPath: m_TileAssetArray.Array.size
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 9105844261129442343, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
         type: 3}
       propertyPath: m_TileSpriteArray.Array.size
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 9105844261129442343, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
         type: 3}
@@ -13763,6 +13768,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TileColorArray.Array.data[0].m_Data.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9105844261129442343, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
+        type: 3}
+      propertyPath: m_TileAssetArray.Array.data[16].m_RefCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9105844261129442343, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
+        type: 3}
+      propertyPath: m_TileAssetArray.Array.data[16].m_Data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9105844261129442343, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
+        type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[16].m_RefCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9105844261129442343, guid: 6986dc50be620ec4bbc6f2676b0e3de4,
+        type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[16].m_Data
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6986dc50be620ec4bbc6f2676b0e3de4, type: 3}
