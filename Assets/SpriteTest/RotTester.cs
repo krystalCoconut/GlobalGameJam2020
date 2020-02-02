@@ -7,10 +7,13 @@ public class RotTester : MonoBehaviour
     public Vector3 theRot;
     public Sprite[] thesprites;
     public bool dontRotate;
+    public CubeSide front;
+    public Transform mySide;
 
     // Start is called before the first frame update
     void Start()
     {
+        front = GameObject.Find("FRONT").GetComponent<CubeSide>();
         transform.position = new Vector3(Mathf.Floor(transform.position.x) + 0.5f, Mathf.Floor(transform.position.y) + 0.5f,transform.position.z);
     }
 
@@ -19,7 +22,7 @@ public class RotTester : MonoBehaviour
     {
         if (dontRotate)
         {
-            transform.eulerAngles = new Vector3(0, 0, 0);
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0);
         }
 
         
@@ -43,6 +46,25 @@ public class RotTester : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().flipX = false;
             GetComponent<SpriteRenderer>().sprite = thesprites[2];
+        }
+
+
+        // Raycast into the cube to find out which one its on
+        Ray romano = new Ray(transform.position, transform.forward);
+        RaycastHit rh;
+        //Debug.DrawRay(transform.position, transform.forward);
+
+        Physics.Raycast(romano, out rh);
+        if(rh.collider != null)
+        mySide = rh.collider.transform;
+
+        if(front.colliders.Contains(rh.collider))
+        {
+            GetComponent<SpriteRenderer>().enabled = true;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 }

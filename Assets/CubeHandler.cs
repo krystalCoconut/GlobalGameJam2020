@@ -9,6 +9,7 @@ public class CubeHandler : MonoBehaviour
     public CubeSide right, up, down, left, front, back;
     private static CubeHandler _instance;
 
+    public bool hasRotatedOnce = false;
     public Collider currentCorner;
 
     public static CubeHandler Instance { get { return _instance; } }
@@ -29,6 +30,9 @@ public class CubeHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(numRotatingSides == 1)
+        {
+            hasRotatedOnce = true;
+        }
     }
 }
