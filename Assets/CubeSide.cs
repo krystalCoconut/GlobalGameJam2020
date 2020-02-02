@@ -26,6 +26,8 @@ public class CubeSide : MonoBehaviour
     public Transform cubeCentre;
 
     public bool collidersEnabled;
+    public bool collidersDisabled;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -140,7 +142,7 @@ public class CubeSide : MonoBehaviour
                 for(int i=0;i<3;i++)
                 {
                     // enable collision tilemap
-                    other.transform.GetChild(i).GetChild(1).gameObject.SetActive(true);
+                    other.transform.GetChild(i).GetChild(1).gameObject.GetComponent<TilemapCollider2D>().enabled = true;
                 }
             }
         }
@@ -154,7 +156,7 @@ public class CubeSide : MonoBehaviour
             for (int i = 0; i < 3; i++)
             {
                 // enable collision tilemap
-                other.transform.GetChild(i).GetChild(1).gameObject.SetActive(false);
+                other.transform.GetChild(i).GetChild(1).gameObject.GetComponent<TilemapCollider2D>().enabled = true;
             }
         }
     }
