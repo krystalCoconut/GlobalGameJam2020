@@ -17,15 +17,7 @@ public class RotTester : MonoBehaviour
     void Update()
     {
         theRot = transform.parent.transform.parent.eulerAngles;
-        if (theRot.z == 0f)
-        {
-            GetComponent<SpriteRenderer>().sprite = thesprites[0];
-        }else
-            if(theRot.z == 90 || theRot.z == 270 )
-        {
-            GetComponent<SpriteRenderer>().sprite = thesprites[1];
-        }
-        else if (theRot.z == 180)
+        if (theRot.x < 90 && theRot.x > -90)
         {
             GetComponent<SpriteRenderer>().sprite = thesprites[2];
         }

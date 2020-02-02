@@ -500,6 +500,12 @@ MonoBehaviour:
   cubeCentre: {fileID: 11876863}
   collidersEnabled: 0
   collidersDisabled: 0
+--- !u!4 &371622525 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6184071908870565420, guid: 43c9598462eec0a47a6cedefad5e0d4e,
+    type: 3}
+  m_PrefabInstance: {fileID: 6571711386211019678}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &534403611 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1253348880397418840, guid: f3b7fba1fce794a4492ad12332ffc515,
@@ -1385,7 +1391,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 548714229395834563}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
 --- !u!1 &1213404985
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,14 +1564,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
-=======
---- !u!4 &1182304194 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8067239067624940161, guid: 0056543aaf95d1b4596fc36c90da2262,
-    type: 3}
-  m_PrefabInstance: {fileID: 6995712266088871137}
-  m_PrefabAsset: {fileID: 0}
->>>>>>> 46fae13e8438fb9deb39a5c3826a603bf422b401
 --- !u!1 &1217070507
 GameObject:
   m_ObjectHideFlags: 0
@@ -2333,10 +2330,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040951763}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.54, y: 3.93, z: 0.01}
+  m_LocalPosition: {x: 3.5, y: 4.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1182304194}
+  m_Father: {fileID: 371622525}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2040951765
@@ -2378,7 +2375,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 8541f3a96e41c7f4eab24770c449c5d6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1162df1d9d34cd94dbc45cca64af782d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2403,7 +2400,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   theRot: {x: 0, y: 0, z: 0}
   thesprites:
-<<<<<<< HEAD
   - {fileID: 21300000, guid: fafb6d1a3d0ebdf4a90a6f3f008c0de9, type: 3}
   - {fileID: 21300000, guid: 8f9569ff23f991845b6eb5d439c1934f, type: 3}
   - {fileID: 21300000, guid: 67ab9db25a5f29e4e995f7cf56818337, type: 3}
@@ -2538,11 +2534,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.875, y: 0.8125}
   m_EdgeRadius: 0
-=======
-  - {fileID: 21300000, guid: 8541f3a96e41c7f4eab24770c449c5d6, type: 3}
-  - {fileID: 21300000, guid: 8541f3a96e41c7f4eab24770c449c5d6, type: 3}
-  - {fileID: 21300000, guid: 5eee63a64d4d20c40a4aa8b887815176, type: 3}
->>>>>>> 46fae13e8438fb9deb39a5c3826a603bf422b401
 --- !u!1001 &2122138022
 PrefabInstance:
   m_ObjectHideFlags: 0
