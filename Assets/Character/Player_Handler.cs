@@ -37,6 +37,14 @@ public class Player_Handler : MonoBehaviour
         axisx = player.GetAxis("Horizontal");
         axisy = player.GetAxis("Vertical");
 
+        // Raycast into the cube to find out which one its on
+        Ray romano = new Ray(transform.position,transform.forward);
+        RaycastHit rh;
+        //Debug.DrawRay(transform.position, transform.forward);
+
+        Physics.Raycast(romano, out rh);
+        CubeHandler.Instance.currentCorner = rh.collider;
+
         //moves and rotates character when input is detected & not colliding
         if (myState == State.normal)
         {

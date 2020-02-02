@@ -21,6 +21,8 @@ public class CubeSide : MonoBehaviour
     public Vector3 axis;
     public Player player;
 
+    public CubeSide oppositeSide;
+
     public Transform cubeCentre;
 
     public bool collidersEnabled;
@@ -36,22 +38,37 @@ public class CubeSide : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // Make sure the side doesn't contain the block the player is standing on
         if(player.GetButtonDown(key) && player.GetButton("Invert") && ch.numRotatingSides == 0)
         {
-            // Rotate anticlockwise
-            startRotation = transform.eulerAngles;
-            rotateDir = -1;
-            ch.numRotatingSides += 1;
-            rotate();
-        }else
-        if(player.GetButtonDown(key) && ch.numRotatingSides == 0)
+            if(!colliders.Contains(CubeHandler.Instance.currentCorner))
+            {
+                // Rotate anticlockwise
+                rotateDir = -1;
+                rotate();
+            }
+            else
+            {
+                oppositeSide.rotateDir = 1;
+                oppositeSide.rotate();
+            }
+            
+        }
+        else if(player.GetButtonDown(key) && ch.numRotatingSides == 0)
         {
-            // Rotate Clockwise
-            startRotation = transform.eulerAngles;
-            rotateDir = 1;
-            ch.numRotatingSides += 1;
-            rotate();
+            if (!colliders.Contains(CubeHandler.Instance.currentCorner))
+            {
+                // Rotate Clockwise
+                rotateDir = 1;
+                rotate();
+            }
+            else
+            {
+                // Rotate other side anticlockwise
+                oppositeSide.rotateDir = -1;
+                oppositeSide.rotate();
+            }
+            
 
         }
 
@@ -97,6 +114,10 @@ public class CubeSide : MonoBehaviour
 
     public void rotate()
     {
+
+        startRotation = transform.eulerAngles;
+        ch.numRotatingSides += 1;
+
         // Parent all to the rotator
         foreach (Collider c in colliders)
         {

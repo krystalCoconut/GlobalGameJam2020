@@ -329,6 +329,7 @@ MonoBehaviour:
   rotationAmount: 0
   ch: {fileID: 1619654265}
   axis: {x: 0, y: 0, z: 1}
+  oppositeSide: {fileID: 901691813}
   cubeCentre: {fileID: 11876863}
   collidersEnabled: 0
 --- !u!1 &342893433
@@ -397,6 +398,7 @@ MonoBehaviour:
   rotationAmount: 0
   ch: {fileID: 1619654265}
   axis: {x: -1, y: 0, z: 0}
+  oppositeSide: {fileID: 1217070510}
   cubeCentre: {fileID: 11876863}
   collidersEnabled: 0
 --- !u!4 &534403611 stripped
@@ -471,6 +473,7 @@ MonoBehaviour:
   rotationAmount: 0
   ch: {fileID: 1619654265}
   axis: {x: 0, y: 1, z: 0}
+  oppositeSide: {fileID: 1285429808}
   cubeCentre: {fileID: 11876863}
   collidersEnabled: 0
 --- !u!1 &737614659
@@ -605,6 +608,7 @@ MonoBehaviour:
   rotationAmount: 0
   ch: {fileID: 1619654265}
   axis: {x: 0, y: 0, z: -1}
+  oppositeSide: {fileID: 243657603}
   cubeCentre: {fileID: 11876863}
   collidersEnabled: 1
 --- !u!1 &1166652498
@@ -1318,6 +1322,7 @@ MonoBehaviour:
   rotationAmount: 0
   ch: {fileID: 1619654265}
   axis: {x: 1, y: 0, z: 0}
+  oppositeSide: {fileID: 342893436}
   cubeCentre: {fileID: 11876863}
   collidersEnabled: 0
 --- !u!1 &1285429805
@@ -1386,6 +1391,7 @@ MonoBehaviour:
   rotationAmount: 0
   ch: {fileID: 1619654265}
   axis: {x: 0, y: -1, z: 0}
+  oppositeSide: {fileID: 713022709}
   cubeCentre: {fileID: 11876863}
   collidersEnabled: 0
 --- !u!4 &1384413578 stripped
@@ -1649,12 +1655,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numRotatingSides: 0
   isRotating: 0
-  right: {fileID: 0}
-  up: {fileID: 0}
-  down: {fileID: 0}
-  left: {fileID: 0}
-  front: {fileID: 0}
-  back: {fileID: 0}
+  right: {fileID: 1217070510}
+  up: {fileID: 713022709}
+  down: {fileID: 1285429808}
+  left: {fileID: 342893436}
+  front: {fileID: 901691813}
+  back: {fileID: 243657603}
+  currentCorner: {fileID: 0}
 --- !u!4 &1641230939 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6851228930615185726, guid: 426145e5ca951264ba586cc718fbc9c1,
@@ -2196,7 +2203,7 @@ PrefabInstance:
     - target: {fileID: 5122683904063039784, guid: 74ed54e072a5e2b4591119e6e882c9f7,
         type: 3}
       propertyPath: m_Tiles.Array.data[10].second.m_TileSpriteIndex
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5122683904063039784, guid: 74ed54e072a5e2b4591119e6e882c9f7,
         type: 3}
@@ -2211,11 +2218,52 @@ PrefabInstance:
     - target: {fileID: 5122683904063039784, guid: 74ed54e072a5e2b4591119e6e882c9f7,
         type: 3}
       propertyPath: m_TileSpriteArray.Array.data[7].m_RefCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5122683904063039784, guid: 74ed54e072a5e2b4591119e6e882c9f7,
         type: 3}
       propertyPath: m_TileSpriteArray.Array.data[7].m_Data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5122683904063039784, guid: 74ed54e072a5e2b4591119e6e882c9f7,
+        type: 3}
+      propertyPath: m_Tiles.Array.data[8].second.m_TileSpriteIndex
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5122683904063039784, guid: 74ed54e072a5e2b4591119e6e882c9f7,
+        type: 3}
+      propertyPath: m_Tiles.Array.data[9].second.m_TileSpriteIndex
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5122683904063039784, guid: 74ed54e072a5e2b4591119e6e882c9f7,
+        type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[6].m_RefCount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5122683904063039784, guid: 74ed54e072a5e2b4591119e6e882c9f7,
+        type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[13].m_RefCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5122683904063039784, guid: 74ed54e072a5e2b4591119e6e882c9f7,
+        type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[13].m_Data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5122683904063039784, guid: 74ed54e072a5e2b4591119e6e882c9f7,
+        type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[16].m_Data
+      value: 
+      objectReference: {fileID: -8644859788400423222, guid: 8a4c9573d0acdbe47a2492537f408a7c,
+        type: 3}
+    - target: {fileID: 5122683904063039784, guid: 74ed54e072a5e2b4591119e6e882c9f7,
+        type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[15].m_RefCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5122683904063039784, guid: 74ed54e072a5e2b4591119e6e882c9f7,
+        type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[15].m_Data
       value: 
       objectReference: {fileID: 560467764361688824, guid: 8a4c9573d0acdbe47a2492537f408a7c,
         type: 3}
