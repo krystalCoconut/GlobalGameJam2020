@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Rewired;
 
 public class Player_Handler : MonoBehaviour
@@ -11,15 +12,14 @@ public class Player_Handler : MonoBehaviour
     float axisx, axisy, bounceTimer = 0.1f;
     Vector2 direction;
     RaycastHit2D colRay;
-    public enum State { normal, bounceback, attack } ;
+    public enum State { normal, bounceback, attack, winning} ;
     public State myState;
     Player player;
     Animator anim;
     public float radius;
-
     public float attackTimer;
-
     public Transform cubeCentre;
+    public GameObject winscreen;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +46,25 @@ public class Player_Handler : MonoBehaviour
         CubeHandler.Instance.currentCorner = rh.collider;
 
         //moves and rotates character when input is detected & not colliding
+
+        if (player.GetButtonDown("Action"))
+        {
+            if (myState == State.winning)
+            {
+                Debug.Log("restart");
+                SceneManager.LoadScene(0);
+            }
+            else if (myState == State.normal)
+            {
+                anim.speed = 1;
+                speed = 0;
+                anim.SetBool("Wrench", true);
+                attackTimer = 0.6f;
+                myState = State.attack;
+            }
+
+
+        }
         if (myState == State.normal)
         {
             if (axisx != 0 || axisy != 0 && colRay.collider == null)
@@ -66,14 +85,7 @@ public class Player_Handler : MonoBehaviour
             transform.Translate(direction * speed * Time.deltaTime);
             direction = new Vector2(axisx, axisy);
 
-            if(player.GetButtonDown("Action"))
-            {
-                anim.speed = 1;
-                speed = 0;
-                anim.SetBool("Wrench", true);
-                attackTimer = 0.6f;
-                myState = State.attack;
-            }
+         
 
             if (axisx < 0)
             {
@@ -121,9 +133,9 @@ public class Player_Handler : MonoBehaviour
                 //Debug.Log("you hit wall ^____^^");
                 myState = State.bounceback;
             }
-            if (colRay.collider.CompareTag("Spin"))
+            if (colRay.collider.CompareTag("Bread"))
             {
-                //c_rot.spin();
+                winner();
             }
         }
 
@@ -180,6 +192,13 @@ public class Player_Handler : MonoBehaviour
         {
             children[i].SetParent(cubeCentre);
         }
+    }
+
+    void winner()
+    {
+        myState = State.winning;
+        Debug.Log("you are Winner");
+        winscreen.SetActive(true);
     }
     
 }
