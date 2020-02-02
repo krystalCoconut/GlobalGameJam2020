@@ -101,6 +101,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fbadbdeed9534134fb0283a656e53477, type: 3}
   - {fileID: 21300000, guid: 5eee63a64d4d20c40a4aa8b887815176, type: 3}
   dontRotate: 1
+  front: {fileID: 0}
+  mySide: {fileID: 0}
+  smoke: {fileID: 0}
 --- !u!60 &1346366861
 PolygonCollider2D:
   m_ObjectHideFlags: 0

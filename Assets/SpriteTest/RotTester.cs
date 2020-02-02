@@ -10,6 +10,8 @@ public class RotTester : MonoBehaviour
     public CubeSide front;
     public Transform mySide;
 
+    public GameObject smoke;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,7 +66,17 @@ public class RotTester : MonoBehaviour
         }
         else
         {
-            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<SpriteRenderer>().enabled = true;
         }
+
     }
+
+    public void DestroyMe()
+    {
+        Instantiate(smoke, transform);
+        Destroy(gameObject);
+    }
+
 }
+
+

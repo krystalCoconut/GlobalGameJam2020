@@ -112,11 +112,17 @@ public class Player_Handler : MonoBehaviour
         else if(myState == State.attack)
         {
             attackTimer -= Time.deltaTime;
-            if(attackTimer <= 0)
+
+            GetComponent<PolygonCollider2D>().enabled = false;
+            GetComponent<PolygonCollider2D>().enabled = true;
+
+            if (attackTimer <= 0)
             {
                 anim.SetBool("Wrench", false);
                 attackTimer = 0f;
                 myState = State.normal;
+                GetComponent<PolygonCollider2D>().enabled = false;
+                GetComponent<PolygonCollider2D>().enabled = true;
             }
         }
         #endregion
@@ -136,6 +142,11 @@ public class Player_Handler : MonoBehaviour
             if (colRay.collider.CompareTag("Bread"))
             {
                 winner();
+            }
+            if(colRay.collider.CompareTag("Iter"))
+            {
+
+                colRay.collider.GetComponent<RotTester>().DestroyMe();
             }
         }
 

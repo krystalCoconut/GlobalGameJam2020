@@ -9,6 +9,9 @@ TagManager:
   - Interactable
   - Bread
   - BT
+  - Inter
+  - Iter'
+  - Iter
   layers:
   - Default
   - TransparentFX
