@@ -156,7 +156,7 @@ public class CubeSide : MonoBehaviour
             for (int i = 0; i < 3; i++)
             {
                 // enable collision tilemap
-                other.transform.GetChild(i).GetChild(1).gameObject.GetComponent<TilemapCollider2D>().enabled = true;
+                other.transform.GetChild(i).GetChild(1).gameObject.GetComponent<TilemapCollider2D>().enabled = false;
             }
         }
     }
