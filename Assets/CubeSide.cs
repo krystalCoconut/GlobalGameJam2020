@@ -40,6 +40,7 @@ public class CubeSide : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         // Make sure the side doesn't contain the block the player is standing on
         if(player.GetButtonDown(key) && player.GetButton("Invert") && ch.numRotatingSides == 0)
         {
@@ -113,6 +114,26 @@ public class CubeSide : MonoBehaviour
     }
 
 
+    public void MobileRotation()
+    {
+        if (ch.numRotatingSides == 0)
+        {
+            if (!colliders.Contains(CubeHandler.Instance.currentCorner))
+            {
+                // Rotate Clockwise
+                rotateDir = 1;
+                rotate();
+            }
+            else
+            {
+                // Rotate other side anticlockwise
+                oppositeSide.rotateDir = -1;
+                oppositeSide.rotate();
+            }
+
+
+        }
+    }
 
     public void rotate()
     {

@@ -9,7 +9,7 @@ public class Player_Handler : MonoBehaviour
     //public GameObject daCube;
   //  Cube_Rotator c_rot;
     int speed = 5 , bounceSpeed = 5;
-    float axisx, axisy, bounceTimer = 0.1f;
+    public float axisx, axisy, bounceTimer = 0.1f;
     Vector2 direction;
     RaycastHit2D colRay;
     public enum State { normal, bounceback, attack, winning} ;
@@ -20,6 +20,8 @@ public class Player_Handler : MonoBehaviour
     public float attackTimer;
     public Transform cubeCentre;
     public GameObject winscreen;
+    public bool usingmobile;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -34,8 +36,12 @@ public class Player_Handler : MonoBehaviour
 
         #region movement
         //mapping input to float value
-        axisx = player.GetAxis("Horizontal");
-        axisy = player.GetAxis("Vertical");
+        
+            if(usingmobile!=true)
+            {
+                axisx = player.GetAxis("Horizontal");
+                axisy = player.GetAxis("Vertical");
+            }
 
         // Raycast into the cube to find out which one its on
         Ray romano = new Ray(transform.position,transform.forward);

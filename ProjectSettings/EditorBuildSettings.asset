@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/twobytwo.unity
-    guid: 016260805fa3d044ab91c0bd7a903d9e
+    path: Assets/Scenes/Mobile_Version.unity
+    guid: ed93b345b6c410549b1d9f92533052f5
   m_configObjects: {}
