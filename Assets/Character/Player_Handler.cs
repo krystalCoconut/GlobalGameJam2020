@@ -21,6 +21,9 @@ public class Player_Handler : MonoBehaviour
     public Transform cubeCentre;
     public GameObject winscreen;
 
+    // rightone 0 right two 1 leftone 2 lefttwo 3
+    public BoxCollider2D[] swingHitBoxes = new BoxCollider2D[4];
+
     // Start is called before the first frame update
     void Start()
     {
@@ -113,43 +116,39 @@ public class Player_Handler : MonoBehaviour
         {
             attackTimer -= Time.deltaTime;
 
-            GetComponent<PolygonCollider2D>().enabled = false;
-            GetComponent<PolygonCollider2D>().enabled = true;
+            if(attackTimer >= 0.25f )
+            {
+                swingHitBoxes[0].enabled = false;
+                swingHitBoxes[1].enabled = false;
+                swingHitBoxes[2].enabled = true;
+                swingHitBoxes[3].enabled = true;
+            }
+            else if(attackTimer >= 0.125f )
+            {
+                swingHitBoxes[0].enabled = true;
+                swingHitBoxes[1].enabled = true;
+                swingHitBoxes[2].enabled = false;
+                swingHitBoxes[3].enabled = false;
+            }
 
             if (attackTimer <= 0)
             {
                 anim.SetBool("Wrench", false);
+
+                // turn off all the hitboxes
+                swingHitBoxes[0].enabled = false;
+                swingHitBoxes[1].enabled = false;
+                swingHitBoxes[2].enabled = false;
+                swingHitBoxes[3].enabled = false;
+
                 attackTimer = 0f;
                 myState = State.normal;
-                GetComponent<PolygonCollider2D>().enabled = false;
-                GetComponent<PolygonCollider2D>().enabled = true;
+               
             }
         }
         #endregion
 
         #region collisionCast
-        //raycast 
-        colRay = Physics2D.Raycast(transform.position,direction,radius);
-        // raycast detects collision
-        if(colRay.collider!=null)
-        {
-            if (colRay.collider.CompareTag("Wall"))
-            {
-                Debug.Log(colRay.collider);
-                //Debug.Log("you hit wall ^____^^");
-                myState = State.bounceback;
-            }
-            if (colRay.collider.CompareTag("Bread"))
-            {
-                winner();
-            }
-            if(colRay.collider.CompareTag("Iter"))
-            {
-
-                colRay.collider.GetComponent<RotTester>().DestroyMe();
-            }
-        }
-
        
         if(transform.position.x >= 9 || transform.position.x <= -9)
         {
@@ -168,7 +167,7 @@ public class Player_Handler : MonoBehaviour
             transform.position = new Vector3(-transform.position.x, transform.position.y,transform.position.z);
         }
 
-        if (transform.position.y >= 9 || transform.position.y <= -9)
+        if (transform.position.y >= 9.5f || transform.position.y <= -9.5f)
         {
             if (transform.position.y >= 9)
             {
@@ -210,6 +209,19 @@ public class Player_Handler : MonoBehaviour
         myState = State.winning;
         Debug.Log("you are Winner");
         winscreen.SetActive(true);
+    }
+
+    /// <summary>
+    /// Sent when an incoming collider makes contact with this object's
+    /// collider (2D physics only).
+    /// </summary>
+    /// <param name="other">The Collision2D data associated with this collision.</param>
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.collider.CompareTag("Bread"))
+            {
+                winner();
+            }
     }
     
 }

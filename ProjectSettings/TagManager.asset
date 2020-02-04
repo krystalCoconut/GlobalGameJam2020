@@ -9,9 +9,8 @@ TagManager:
   - Interactable
   - Bread
   - BT
-  - Inter
-  - Iter'
   - Iter
+  - PlayerAttack
   layers:
   - Default
   - TransparentFX
