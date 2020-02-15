@@ -164,7 +164,7 @@ public class Player_Handler : MonoBehaviour
 
                 normalise();
             }
-            transform.position = new Vector3(-transform.position.x, transform.position.y,transform.position.z);
+            transform.position = new Vector3(-transform.position.x + Mathf.Sign(transform.position.x) * 0.5f, transform.position.y,transform.position.z);
         }
 
         if (transform.position.y >= 9.5f || transform.position.y <= -9.5f)
@@ -181,7 +181,7 @@ public class Player_Handler : MonoBehaviour
 
                 normalise();
             }
-            transform.position = new Vector3(transform.position.x, -transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x, -transform.position.y + Mathf.Sign(transform.position.y) * 0.5f, transform.position.z);
         }
         #endregion
     }

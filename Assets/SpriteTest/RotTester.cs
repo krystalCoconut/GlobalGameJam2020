@@ -14,6 +14,8 @@ public class RotTester : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private PolygonCollider2D polygonCollider2D;
 
+    public int myRot;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,21 +35,21 @@ public class RotTester : MonoBehaviour
         
 
         theRot = transform.parent.parent.parent.eulerAngles;
-        if (theRot.z == 0f)
+        if (theRot.z == 0f + myRot)
         {
             spriteRenderer.flipX = false;
             spriteRenderer.sprite = thesprites[0];
         }else
-            if(theRot.z == 90)
+            if(theRot.z == 90 + myRot)
         {
             spriteRenderer.flipX = true;
             spriteRenderer.sprite = thesprites[1];
-        }else if (theRot.z == 270)
+        }else if (theRot.z == 270 + myRot)
         {
             spriteRenderer.flipX = false;
             spriteRenderer.sprite = thesprites[1];
         }
-        else if (theRot.z == 180)
+        else if (theRot.z == 180 + myRot)
         {
             spriteRenderer.flipX = false;
             spriteRenderer.sprite = thesprites[2];
