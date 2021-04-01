@@ -167,7 +167,7 @@ public class Player_Handler : MonoBehaviour
             transform.position = new Vector3(-transform.position.x, transform.position.y,transform.position.z);
         }
 
-        if (transform.position.y >= 9.5f || transform.position.y <= -9.5f)
+        if (transform.position.y >= 9f || transform.position.y <= -9f)
         {
             if (transform.position.y >= 9)
             {
