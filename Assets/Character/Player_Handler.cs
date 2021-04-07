@@ -8,7 +8,7 @@ public class Player_Handler : MonoBehaviour
 {
     //public GameObject daCube;
   //  Cube_Rotator c_rot;
-    int speed = 5 , bounceSpeed = 5;
+    int speed = 15 , bounceSpeed = 5;
     float axisx, axisy, bounceTimer = 0.1f;
     Vector2 direction;
     RaycastHit2D colRay;
@@ -21,6 +21,9 @@ public class Player_Handler : MonoBehaviour
     public Transform cubeCentre;
     public GameObject winscreen;
 
+    public Vector3 axis;
+    public float angleAxis;
+    
     // rightone 0 right two 1 leftone 2 lefttwo 3
     public BoxCollider2D[] swingHitBoxes = new BoxCollider2D[4];
 
@@ -31,6 +34,8 @@ public class Player_Handler : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+    
+    
     // Update is called once per frame
     void Update()
     {
@@ -42,10 +47,31 @@ public class Player_Handler : MonoBehaviour
 
         // Raycast into the cube to find out which one its on
         Ray romano = new Ray(transform.position,transform.forward);
-        RaycastHit rh;
-        //Debug.DrawRay(transform.position, transform.forward);
-
-        Physics.Raycast(romano, out rh);
+        
+        Ray rightCheck = new Ray(transform.position + transform.forward,transform.right);
+        Ray leftCheck = new Ray(transform.position + transform.forward,-transform.right);
+        Ray downCheck = new Ray(transform.position + transform.forward,-transform.up);
+        Ray upCheck = new Ray(transform.position + transform.forward,transform.up);
+        
+        RaycastHit rh,rightHit,leftHit,upHit,downHit;
+        
+        
+        // DEBUGS
+        Debug.DrawRay(transform.position, transform.forward);
+        Debug.DrawRay(transform.position + transform.forward, transform.right);
+        Debug.DrawRay(transform.position + transform.forward, -transform.right);
+        Debug.DrawRay(transform.position + transform.forward, -transform.up);
+        Debug.DrawRay(transform.position + transform.forward, transform.up);
+        
+        
+        Physics.Raycast(romano, out rh,.2f);
+        Physics.Raycast(rightCheck, out rightHit,.2f);
+        Physics.Raycast(leftCheck, out leftHit,.2f);
+        Physics.Raycast(downCheck, out downHit,.2f);
+        Physics.Raycast(upCheck, out upHit,.2f);
+        
+        
+        
         CubeHandler.Instance.currentCorner = rh.collider;
 
         //moves and rotates character when input is detected & not colliding
@@ -73,7 +99,7 @@ public class Player_Handler : MonoBehaviour
             if (axisx != 0 || axisy != 0 && colRay.collider == null)
             {
 
-                speed = 3;
+                speed = 5;
                 float playrate = Mathf.Abs(axisx) + Mathf.Abs(axisy);
                 anim.speed = playrate;
                 anim.SetBool("Moving", true);
@@ -149,40 +175,80 @@ public class Player_Handler : MonoBehaviour
         #endregion
 
         #region collisionCast
+
+        
        
-        if(transform.position.x >= 9 || transform.position.x <= -9)
-        {
-            if(transform.position.x >= 9)
-            {
-                cubeCentre.Rotate(new Vector3(0, 90, 0));
-
-                normalise();
+        if (!rh.collider) {
+            //Debug.Log("OFFSCREEN");
+            RaycastHit[] hits = {leftHit,rightHit,upHit,downHit};
+            Ray[] rays = {leftCheck, rightCheck, upCheck, downCheck};
+            int i = 0;
+            foreach (var hit in hits) {
+                if (hit.collider == true) {
+                    switch (i) {
+                        case 0:
+                            Debug.Log("LEFT");
+                            transform.Rotate( Vector3.up,-90);
+                            transform.position = hit.point - transform.forward/10;
+                            continue;
+                        case 1:
+                            Debug.Log("RIGHT");
+                            transform.Rotate( Vector3.up,90);
+                            transform.position = hit.point - transform.forward/10;
+                            continue;
+                        case 2:
+                            Debug.Log("UP");
+                            transform.Rotate( Vector3.right,-90);
+                            transform.position = hit.point - transform.forward/10;
+                            continue;
+                        case 3:
+                            Debug.Log("DOWN");
+                            transform.Rotate( Vector3.right,90);
+                            transform.position = hit.point - transform.forward/10;
+                            continue;
+                    }
+                    
+                }
+                i++;
+                
             }
-            else if(transform.position.x <= -9)
-            {
-                cubeCentre.Rotate(new Vector3(0, -90, 0));
-
-                normalise();
-            }
-            transform.position = new Vector3(-transform.position.x, transform.position.y,transform.position.z);
         }
-
-        if (transform.position.y >= 9f || transform.position.y <= -9f)
-        {
-            if (transform.position.y >= 9)
-            {
-                cubeCentre.Rotate(new Vector3(-90, 0, 0));
-
-                normalise();
-            }
-            else if (transform.position.y <= -9)
-            {
-                cubeCentre.Rotate(new Vector3(90, 0, 0));
-
-                normalise();
-            }
-            transform.position = new Vector3(transform.position.x, -transform.position.y, transform.position.z);
-        }
+        
+        // if(transform.position.x >= 9 || transform.position.x <= -9)
+        // {
+        //     if(transform.position.x >= 9)
+        //     {
+        //         //cubeCentre.Rotate(new Vector3(0, 90, 0));
+        //         //transform.position = new Vector3(transform.position.z, transform.position.y,transform.position.x);
+        //         
+        //         normalise();
+        //     }
+        //     else if(transform.position.x <= -9)
+        //     {
+        //         //cubeCentre.Rotate(new Vector3(0, -90, 0));
+        //
+        //         normalise();
+        //     }
+        //     
+        //     //transform.Rotate();
+        // }
+        //
+        // if (transform.position.y >= 9f || transform.position.y <= -9f)
+        // {
+        //     if (transform.position.y >= 9)
+        //     {
+        //         //cubeCentre.Rotate(new Vector3(-90, 0, 0));
+        //
+        //         normalise();
+        //     }
+        //     else if (transform.position.y <= -9)
+        //     {
+        //         //cubeCentre.Rotate(new Vector3(90, 0, 0));
+        //
+        //         normalise();
+        //     }
+        //     transform.position = new Vector3(transform.position.x, -transform.position.y, transform.position.z);
+        // }
         #endregion
     }
 

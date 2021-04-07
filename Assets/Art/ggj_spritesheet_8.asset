@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: ggj_spritesheet_8
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 2028555792066948870, guid: 8a4c9573d0acdbe47a2492537f408a7c,
+  m_Sprite: {fileID: 8671836542560866120, guid: 8a4c9573d0acdbe47a2492537f408a7c,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:

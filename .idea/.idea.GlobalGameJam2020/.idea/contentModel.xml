@@ -16,7 +16,9 @@
         <e p="CubeHandler.cs" t="Include" />
         <e p="CubeSide.cs" t="Include" />
         <e p="dust.cs" t="Include" />
+        <e p="FaceGrid.cs" t="Include" />
         <e p="minimap.cs" t="Include" />
+        <e p="modelRotate.cs" t="Include" />
         <e p="Rewired" t="Include">
           <e p="Integration" t="Include">
             <e p="UnityUI" t="Include">
@@ -63,6 +65,7 @@
           </e>
         </e>
         <e p="Rotator.cs" t="Include" />
+        <e p="SpriteRotate.cs" t="Include" />
         <e p="SpriteTest" t="Include">
           <e p="RotTester.cs" t="Include" />
         </e>

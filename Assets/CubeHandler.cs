@@ -8,7 +8,7 @@ public class CubeHandler : MonoBehaviour
     public bool isRotating;
     public CubeSide right, up, down, left, front, back;
     private static CubeHandler _instance;
-
+    public Player_Handler player;
     public bool hasRotatedOnce = false;
     public Collider currentCorner;
 
@@ -25,6 +25,8 @@ public class CubeHandler : MonoBehaviour
         {
             _instance = this;
         }
+
+        player = FindObjectOfType<Player_Handler>();
     }
 
     // Update is called once per frame

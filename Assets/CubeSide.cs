@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Rewired;
@@ -28,12 +29,17 @@ public class CubeSide : MonoBehaviour
     public bool collidersEnabled;
     public bool collidersDisabled;
 
+    private CinemachineVirtualCamera vCam;
+    
     // Start is called before the first frame update
     void Start()
     {
+        // used for rotating the current face
         player = ReInput.players.GetPlayer(0);
 
-
+        vCam = transform.GetChild(0).GetComponent<CinemachineVirtualCamera>();
+        
+        
         bc = GetComponent<BoxCollider>();
     }
 
@@ -133,8 +139,9 @@ public class CubeSide : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!colliders.Contains(other))
+        if (!colliders.Contains(other) && other.name != "RotateChecker")
         {
+            
             colliders.Add(other);
 
             if(collidersEnabled)
@@ -142,22 +149,52 @@ public class CubeSide : MonoBehaviour
                 for(int i=0;i<3;i++)
                 {
                     // enable collision tilemap
-                    other.transform.GetChild(i).GetChild(1).gameObject.GetComponent<TilemapCollider2D>().enabled = true;
+                    other.transform.GetChild(i).GetChild(0).gameObject.GetComponent<TilemapCollider2D>().enabled = true;
                 }
             }
         }
+        
+//        Debug.Log(other.name);
+        
+        if(other.name == "RotateChecker") {
+            transform.GetChild(0).GetComponent<CinemachineVirtualCamera>().Priority = 1000;
+            vCam.transform.rotation = CubeHandler.Instance.player.transform.rotation;
+            
+            
+            //transform.GetChild(0).GetComponent<CinemachineVirtualCamera>().m_Lens.Dutch = FindObjectOfType<Player_Handler>().transform.eulerAngles.z;
+        }
+    }
+    
+    Vector3 getDominantAxis(Vector3 position) {
+        if( Mathf.RoundToInt(Mathf.Abs(position.x)) == 30 ) 
+            return new Vector3(Mathf.Sign(position.y),0,0);
+        else if( Mathf.RoundToInt(Mathf.Abs(position.y)) == 30 )
+            return new Vector3(0,Mathf.Sign(position.y),0);
+        else if ( Mathf.RoundToInt(Mathf.Abs(position.z)) == 30 )
+            return new Vector3(0, 0, Mathf.Sign(position.z));
+        else
+            return Vector3.zero;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        colliders.Remove(other);
-        if (collidersEnabled)
-        {
-            for (int i = 0; i < 3; i++)
+        if (other.name != "RotateChecker") {
+            colliders.Remove(other);
+            if (collidersEnabled )
             {
-                // enable collision tilemap
-                other.transform.GetChild(i).GetChild(1).gameObject.GetComponent<TilemapCollider2D>().enabled = false;
+                for (int i = 0; i < 3; i++)
+                {
+                    // enable collision tilemap
+                    other.transform.GetChild(i).GetChild(0).gameObject.GetComponent<TilemapCollider2D>().enabled = false;
+                }
             }
+        }
+
+        if (other.name == "RotateChecker") {
+            transform.GetChild(0).GetComponent<CinemachineVirtualCamera>().Priority = 00;
+            vCam.transform.rotation = CubeHandler.Instance.player.transform.rotation;
+            //transform.GetChild(0).GetComponent<CinemachineVirtualCamera>().m_Lens.Dutch = FindObjectOfType<Player_Handler>().transform.eulerAngles.z;
+            //transform.GetChild(0).GetComponent<CinemachineVirtualCamera>().
         }
     }
 
