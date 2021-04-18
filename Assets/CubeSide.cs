@@ -30,7 +30,8 @@ public class CubeSide : MonoBehaviour
     public bool collidersDisabled;
 
     private CinemachineVirtualCamera vCam;
-    
+    public bool currentSide;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -159,8 +160,8 @@ public class CubeSide : MonoBehaviour
         if(other.name == "RotateChecker") {
             transform.GetChild(0).GetComponent<CinemachineVirtualCamera>().Priority = 1000;
             vCam.transform.rotation = CubeHandler.Instance.player.transform.rotation;
-            
-            
+
+            currentSide = true;
             //transform.GetChild(0).GetComponent<CinemachineVirtualCamera>().m_Lens.Dutch = FindObjectOfType<Player_Handler>().transform.eulerAngles.z;
         }
     }
@@ -193,6 +194,7 @@ public class CubeSide : MonoBehaviour
         if (other.name == "RotateChecker") {
             transform.GetChild(0).GetComponent<CinemachineVirtualCamera>().Priority = 00;
             vCam.transform.rotation = CubeHandler.Instance.player.transform.rotation;
+            currentSide = false;
             //transform.GetChild(0).GetComponent<CinemachineVirtualCamera>().m_Lens.Dutch = FindObjectOfType<Player_Handler>().transform.eulerAngles.z;
             //transform.GetChild(0).GetComponent<CinemachineVirtualCamera>().
         }

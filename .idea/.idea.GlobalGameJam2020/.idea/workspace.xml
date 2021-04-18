@@ -20,15 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1bb64b10-87fe-4e84-8802-68646e0e40ef" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GlobalGameJam2020/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GlobalGameJam2020/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GlobalGameJam2020/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GlobalGameJam2020/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Tiles.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Tiles.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/test.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/test.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/test.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/test.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CubeSide.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CubeSide.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/onebyone.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/onebyone.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/twobytwo.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/twobytwo.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/chair/chair.obj.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/chair/chair.obj.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/localRotate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/localRotate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,9 +54,9 @@
         <option value="$PROJECT_DIR$/Assets/FaceGrid.cs" />
         <option value="$PROJECT_DIR$/Assets/Character/Player_Handler.cs" />
         <option value="$PROJECT_DIR$/Assets/SpriteRotate.cs" />
-        <option value="$PROJECT_DIR$/Assets/CubeSide.cs" />
         <option value="$PROJECT_DIR$/Assets/modelRotate.cs" />
         <option value="$PROJECT_DIR$/Assets/ShaderTest/RotationShader.shader" />
+        <option value="$PROJECT_DIR$/Assets/CubeSide.cs" />
         <option value="$PROJECT_DIR$/Assets/localRotate.cs" />
       </list>
     </option>
@@ -113,6 +109,7 @@
       <workItem from="1617600281931" duration="11397000" />
       <workItem from="1617772309097" duration="5202000" />
       <workItem from="1618621739677" duration="9719000" />
+      <workItem from="1618710454979" duration="2530000" />
     </task>
     <servers />
   </component>
